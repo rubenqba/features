@@ -1,0 +1,19 @@
+{
+    "name": "Team Explorer Everywhere",
+    "id": "tee-clc",
+    "version": "1.0.0",
+    "description": "Install Team Explorer Everywhere CLI",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "14.139.0"
+            ],
+            "default": "14.139.0",
+            "description": "Select TEE version"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
