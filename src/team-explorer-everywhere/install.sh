@@ -5,6 +5,10 @@ install_deps() {
   apt update -q && apt install curl unzip jq -yq
 }
 
+install_java() {
+  apt update -q && apt install openjdk-17-jre -yq
+}
+
 # Función para agregar al PATH de diferentes shells
 add_to_shell_profile() {
   local shell_profile="$1"
@@ -61,9 +65,10 @@ check_version() {
 
 echo "Activating feature 'tee-clc'"
 
-which curl 2> /dev/null || install_deps
-which unzip 2> /dev/null || install_deps
-which jq 2> /dev/null || install_deps
+which curl 2>&1 > /dev/null || install_deps
+which unzip 2>&1 > /dev/null || install_deps
+which jq 2>&1 > /dev/null || install_deps
+which java 2>&1 > /dev/null || install_deps
 
 VERSION=${VERSION:-latest}
 
