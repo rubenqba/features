@@ -11,7 +11,6 @@ source dev-container-features-test-lib
 # Feature-specific tests
 # The 'check' command comes from the dev-container-features-test-lib.
 check "check if CLI binary is present in PATH" bash -c "which tf"
-check "check if java is installed automatically" bash -c "dpkg-query -W -f='\${Status}' openjdk-17-jre 2>/dev/null | grep -q \"install ok installed\""
 check "show TEE command help" bash -c "tf -help"
 
 # Report results

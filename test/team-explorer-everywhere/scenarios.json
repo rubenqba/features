@@ -6,5 +6,26 @@
                 "version": "14.139.0"
             }
         }
+    },
+    "verify_with_existing_java_sdk": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "team-explorer-everywhere": {},
+            "ghcr.io/devcontainers/features/java:1": {
+                "installMaven": false,
+                "version": "17",
+                "jdkDistro": "tem"
+            }
+        }
+    },
+    "verify_with_existing_java_sdkman": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "team-explorer-everywhere": {},
+            "ghcr.io/ebaskoro/devcontainer-features/sdkman:1": {
+                "candidate": "java",
+                "version": "latest"
+            }
+        }
     }
 }

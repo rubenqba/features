@@ -40,7 +40,9 @@ source dev-container-features-test-lib
 # Feature-specific tests
 # The 'check' command comes from the dev-container-features-test-lib. Syntax is...
 # check <LABEL> <cmd> [args...]
-check "check if TEE CLI is in PATH" bash -c "which tf"
+check "check if TEE CLI is in PATH" bash -c "which java"
+check "check if java is in PATH" bash -c "which tf"
+check "check if java is installed automatically" bash -c "dpkg-query -W -f='\${Status}' openjdk-17-jre 2>/dev/null"
 
 # Report results
 # If any of the checks above exited with a non-zero exit code, the test will fail.

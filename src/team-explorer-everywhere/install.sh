@@ -1,12 +1,37 @@
 #!/bin/bash
 set -ex
 
+# Tiempo de actualización máxima (en segundos) para considerar válida la actualización
+MAX_CACHE_AGE=$((60 * 60))  # 1 hora
+UPDATE_FLAG="/var/run/apt-updated"
+
+# Función para comprobar si necesitamos ejecutar 'apt-get update'
+apt_get_update_if_needed() {
+  if [ ! -f "$UPDATE_FLAG" ]; then
+    local last_update_time="$(stat -c %Y /var/lib/apt/lists 2>/dev/null || echo 0)"
+    local current_time="$(date +%s)"
+    local age=$((current_time - last_update_time))
+
+    if [ "$age" -gt "$MAX_CACHE_AGE" ]; then
+      echo "El listado de paquetes es antiguo ($age segundos), ejecutando apt-get update..."
+      apt-get update
+      touch "$UPDATE_FLAG"  # Marcar que ya se ha actualizado
+    else
+      echo "El listado de paquetes ya está actualizado. No se ejecutará apt-get update."
+    fi
+  else
+    echo "'apt-get update' ya se ejecutó en este script."
+  fi
+}
+
 install_deps() {
-  apt update -q && apt install curl unzip jq -yq
+  apt_get_update_if_needed;
+  apt-get install curl unzip jq -yq
 }
 
 install_java() {
-  apt update -q && apt install openjdk-17-jre -yq
+  apt_get_update_if_needed;
+  apt-get install openjdk-17-jre -yq
 }
 
 # Función para agregar al PATH de diferentes shells
@@ -63,12 +88,12 @@ check_version() {
   return 0;
 }
 
-echo "Activating feature 'tee-clc'"
+echo "Activating feature 'team-explorer-everywhere'"
 
 which curl 2>&1 > /dev/null || install_deps
 which unzip 2>&1 > /dev/null || install_deps
 which jq 2>&1 > /dev/null || install_deps
-which java 2>&1 > /dev/null || install_deps
+which java 2>&1 > /dev/null || install_java
 
 VERSION=${VERSION:-latest}
 
