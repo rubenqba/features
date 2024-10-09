@@ -13,12 +13,12 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - team-explorer-everywhere
         baseImage:
           - debian:latest
           - ubuntu:latest
           - mcr.microsoft.com/devcontainers/base:ubuntu
+          - mcr.microsoft.com/devcontainers/dotnet:6.0
     steps:
       - uses: actions/checkout@v4
 
@@ -34,8 +34,7 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - team-explorer-everywhere
     steps:
       - uses: actions/checkout@v4
 
