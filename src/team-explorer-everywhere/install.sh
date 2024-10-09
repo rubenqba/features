@@ -29,7 +29,7 @@ install_tee() {
 
   if [ ! -d "$BASE_DIR/$version" ]; then
     echo "Installing TEE CLC version $version..."
-    mkdir -p "$BASE_DIR/$version"
+    mkdir -p "$BASE_DIR"
     curl -vLo "$BASE_DIR/tee-clc.zip" https://github.com/microsoft/team-explorer-everywhere/releases/latest/download/TEE-CLC-${version}.zip
     unzip "$BASE_DIR/tee-clc.zip" -d "$BASE_DIR"
     rm -f "$BASE_DIR/tee-clc.zip"
@@ -72,7 +72,7 @@ echo "The provided version is: $VERSION"
 check_version "$VERSION";
 echo "The verified version is: $VERSION"
 
-INSTALL_DIR="/opt/tee"
+INSTALL_DIR="/opt/team-explorer-everywhere"
 
 # The 'install.sh' entrypoint script is always executed as the root user.
 #
