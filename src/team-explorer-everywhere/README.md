@@ -15,7 +15,7 @@ Install Team Explorer Everywhere CLI
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| version | Select TEE version | string | latest |
+| version | Select Team Explorer Everywhere version | string | latest |
 
 
 

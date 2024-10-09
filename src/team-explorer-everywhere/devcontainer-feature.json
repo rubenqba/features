@@ -11,7 +11,7 @@
                 "14.139.0"
             ],
             "default": "latest",
-            "description": "Select TEE version"
+            "description": "Select Team Explorer Everywhere version"
         }
     },
     "installsAfter": [
