@@ -1,9 +1,9 @@
 {
-    "hello": {
+    "verify_cli_present": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
-            "hello": {
-                "greeting": "hello"
+            "team-explorer-everywhere": {
+                "version": "14.139.0"
             }
         }
     }
