@@ -1,7 +1,7 @@
 {
     "name": "Team Explorer Everywhere",
     "id": "team-explorer-everywhere",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Install Team Explorer Everywhere CLI",
     "options": {
         "version": {

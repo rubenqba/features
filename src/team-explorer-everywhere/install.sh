@@ -8,7 +8,8 @@ install_deps() {
 # Función para agregar al PATH de diferentes shells
 add_to_shell_profile() {
   local shell_profile="$1"
-  local export_statement="export PATH=/opt/tee-clc/current:\$PATH"
+  local app_path="$2"
+  local export_statement="export PATH=$app_path:\$PATH"
 
   if [ -f "$shell_profile" ]; then
     # Si el archivo de perfil existe y no tiene ya el comando, lo añadimos
@@ -36,10 +37,10 @@ install_tee() {
     ln -sf "$BASE_DIR/TEE-CLC-$version" "$BASE_DIR/current"
 
     # Agregar el comando 'tf' a PATH
-    add_to_shell_profile "/etc/bash.bashrc"  # para Bash globalmente
-    add_to_shell_profile "/etc/profile"      # para shells POSIX como sh
+    add_to_shell_profile "/etc/bash.bashrc" "$BASE_DIR/current" # para Bash globalmente
+    add_to_shell_profile "/etc/profile" "$BASE_DIR/current"     # para shells POSIX como sh
     # Agregar al PATH en zsh
-    add_to_shell_profile "/etc/zsh/zshrc"    # para Zsh globalmente 
+    add_to_shell_profile "/etc/zsh/zshrc" "$BASE_DIR/current"   # para Zsh globalmente 
   else
     echo "Team Explorer Everywhere v$version is already installed"
   fi;
